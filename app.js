@@ -36,5 +36,9 @@ app.get('/', async (req, res) => {
     }
 });
 
+app.get('/health', (req, res) => {
+  res.render('health'); // Renders health.ejs from the views folder
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

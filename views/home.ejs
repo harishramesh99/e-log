@@ -1,4 +1,5 @@
-<%- include('includes/head') %>
+
+<%- include('includes/head',{ pageTitle: 'Pulse | Blogs', pageStyle: 'style.css' }) %>
 <%- include('includes/navigation') %>
 
  <main class="content">
@@ -50,28 +51,119 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
   </aside>
-</main> 
+</main>
+
+<div class="health-section">
+<h1>HEALTH</h1>
+  <div class="health">
+      <article class="post">
+        <img src="img/fruit.jpg" alt="Tropical fruits">
+        <h2>Understanding Nutrition Labels</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        <div class="meta">
+          <span>7/20/2023</span>
+          <span class="tag">HEALTH</span>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="img/fruit.jpg" alt="Tropical fruits">
+        <h2>Understanding Nutrition Labels</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        <div class="meta">
+          <span>7/20/2023</span>
+          <span class="tag">HEALTH</span>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="img/fruit.jpg" alt="Tropical fruits">
+        <h2>Understanding Nutrition Labels</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        <div class="meta">
+          <span>7/20/2023</span>
+          <span class="tag">HEALTH</span>
+        </div>
+      </article>
+  </div> 
+
+</div>
+  
+<div class="section_sports">
+<h1>SPORTS</h1>
+  <div class="section">
+    <!-- <div class= "sports-grid"> -->
+      <article class="post">
+        <img src="img/water.jpg" alt="Surfer on wave">
+        <h2>Train Like a Pro Athlete</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        <div class="meta">
+          <span>9/3/2022</span>
+          <span class="tag">SPORTS</span>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="img/basket.jpg" alt="Modern gym">
+        <h2>The Evolution of Sports</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        <div class="meta">
+          <span>5/31/2022</span>
+          <span class="tag">SPORTS</span>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="img/ball.jpg" alt="Tennis racket">
+        <h2>Latest Sports News</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        <div class="meta">
+          <span>12/15/2022</span>
+          <span class="tag">SPORTS</span>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="img/gym.jpg" alt="Tennis racket">
+        <h2>Latest Sports News</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        <div class="meta">
+          <span>12/15/2022</span>
+          <span class="tag">SPORTS</span>
+        </div>
+      </article>
+    <!-- </div> -->
+  </div>
+</div>
 
 <script>
-  function toggleDropdown(event) {
-      // Close all other dropdowns
-      document.querySelectorAll('.dropdown').forEach(dropdown => {
-          if (dropdown !== event.currentTarget.parentElement) {
-              dropdown.classList.remove('active');
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownButtons = document.querySelectorAll('.dropbtn');
+
+    dropdownButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const dropdown = event.currentTarget.nextElementSibling;
+
+        // Toggle visibility of the current dropdown
+        dropdown.classList.toggle('visible');
+
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-content').forEach((content) => {
+          if (content !== dropdown) {
+            content.classList.remove('visible');
           }
+        });
+
+        event.stopPropagation();
       });
+    });
 
-      // Toggle current dropdown
-      event.currentTarget.parentElement.classList.toggle('active');
-  }
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(event) {
-      if (!event.target.closest('.dropdown')) {
-          document.querySelectorAll('.dropdown').forEach(dropdown => {
-              dropdown.classList.remove('active');
-          });
-      }
+    // Close dropdown if clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-content').forEach((content) => {
+        content.classList.remove('visible');
+      });
+    });
   });
 </script>
 
