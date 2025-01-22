@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins;
 }
 
  .top_nav {
@@ -163,8 +163,13 @@ div .dropdown {
     font-size: 14px;
   }
 
-  .right-sidebar h23{
+  .right-sidebar h2{
     font-size: 22px;
+  }
+
+  .latest p{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
   }
   .hero-section {
     text-align: center;
@@ -187,7 +192,7 @@ div .dropdown {
   }
   
   h1, h2 {
-    font-family: 'Georgia', serif;
+    /* font-family: 'Georgia', serif; */
     color: black;
   }
   
