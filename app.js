@@ -1,7 +1,7 @@
 // server.js
 require('dotenv').config();
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
+// const expressLayouts = require('express-ejs-layouts');
 const connectDB = require('./config/db');
 const Navigation = require('./models/navigation');
 
@@ -11,8 +11,9 @@ const app = express();
 connectDB();
 
 // EJS setup
-app.use(expressLayouts);
+// app.use(expressLayouts);
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
 // Static files
 app.use(express.static('public'));

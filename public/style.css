@@ -1,0 +1,203 @@
+body {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+}
+
+ .top_nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 15px;
+  background-color: rgb(250, 249, 249);
+   /* margin-bottom: 30px; */
+} 
+
+.logo {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: rgb(250, 249, 249);
+  font-family: Spicy Rice,serif;
+  color: #000000;
+  background-color: black;
+  height: 50px; 
+  text-transform: uppercase;
+}
+
+.top_nav .logo a {
+  color: #fffefe;
+}
+
+.middle {
+  flex: 1; 
+  text-align: center; 
+  color: #000000;
+}
+
+.middle .searchbar {
+  width: 400px;
+  /* max-width: 400px; */
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  /* border-radius: 5px; */
+}
+
+.end {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.top_nav a{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #271e22;
+  font-size: 18px;
+  /* margin-right: 20px; */
+  padding: 0px 40px 0px 40px;
+  /* color: rgb(250, 249, 249); */
+}
+
+.end a:hover {
+  text-decoration: underline;
+}
+
+div .dropdown {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.dropbtn {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 10px 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown:active .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.dropdown-content a:first-child {
+  font-weight: bold;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8f8f8;
+  border-bottom-color: #eee;
+  padding-left: 25px;
+}
+
+/* Optional: Add this to your existing top_nav styles */
+.top_nav .dropdown {
+  margin-left: 20px;
+}
+  
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    /* gap: 20px; */
+    padding: 20px;
+    margin-top: 70px;
+  }
+  
+  .left-sidebar, .right-sidebar {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .left-sidebar h2{
+    font-size: 22px;
+  }
+
+  .left-sidebar p{
+    font-size: 14px;
+  }
+
+  .right-sidebar h23{
+    font-size: 22px;
+  }
+  .hero-section {
+    text-align: center;
+    border-top: 1px solid #ddd;
+  }
+  
+  .hero-section img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .popular-article img, .featured img {
+    width: 100%;
+    height: auto;
+  }
+  
+  h1, h2 {
+    font-family: 'Georgia', serif;
+    color: black;
+  }
+  
+  footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  footer div {
+    margin-bottom: 10px;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  

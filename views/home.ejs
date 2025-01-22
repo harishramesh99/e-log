@@ -1,20 +1,59 @@
-<!-- views/layouts/main.ejs -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DE GUNTIBUS</title>
-    <link rel="stylesheet" href="../public/blog.css">
-</head>
-<body>
-    <%- include('../includes/header') %>
-    
-    <main>
-        <%- body %>
-    </main>
+<%- include('includes/head') %>
+<%- include('includes/navigation') %>
 
-    <%- include('../includes/footer') %>
-    <script src="/js/main.js"></script>
-</body>
-</html>
+ <main class="content">
+  <aside class="left-sidebar">
+    <h2>MOST POPULAR</h2>
+    <div class="popular-article">
+      <img src="/images/popular1.jpg" alt="Popular Article">
+      <p>BUSINESS</p>
+      <h3>Innovative Strategies for Growth</h3>
+      <p>9/3/2022</p>
+    </div>
+  </aside>
+
+  <section class="hero-section">
+    <h1>THE BEAUTY OF DESIGN</h1>
+    <img src="img/girl.jpg" alt="girl">
+  </section>
+
+  <aside class="right-sidebar">
+    <div class="latest">
+      <h2>LATEST</h2>
+      <p><strong>TECHNOLOGY</strong> Transform Our Connected World</p>
+      <p><strong>SPORTS</strong> Train Like a Pro Athlete</p>
+    </div>
+    <div class="featured">
+      <h2>FEATURED</h2>
+      <img src="/images/featured.jpg" alt="Featured Article">
+      <h3>The Future of Technology</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+  </aside>
+</main> 
+
+<script>
+  function toggleDropdown(event) {
+      // Close all other dropdowns
+      document.querySelectorAll('.dropdown').forEach(dropdown => {
+          if (dropdown !== event.currentTarget.parentElement) {
+              dropdown.classList.remove('active');
+          }
+      });
+
+      // Toggle current dropdown
+      event.currentTarget.parentElement.classList.toggle('active');
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+      if (!event.target.closest('.dropdown')) {
+          document.querySelectorAll('.dropdown').forEach(dropdown => {
+              dropdown.classList.remove('active');
+          });
+      }
+  });
+</script>
+
+<%- include('includes/end') %>
+
