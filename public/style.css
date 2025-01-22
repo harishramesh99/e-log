@@ -172,13 +172,18 @@ div .dropdown {
   }
   
   .hero-section img {
-    max-width: 100%;
-    height: auto;
+    max-width: 625px;
+    height: 900px;
   }
   
-  .popular-article img, .featured img {
+ .featured img {
     width: 100%;
     height: auto;
+  }
+
+  .popular-article img{
+    width: 302px;
+    height: 305px;
   }
   
   h1, h2 {
