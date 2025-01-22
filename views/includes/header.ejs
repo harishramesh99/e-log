@@ -1,0 +1,16 @@
+
+<!-- views/partials/header.ejs -->
+<header class="site-header">
+    <div class="header-top">
+        <div class="logo">
+            <a href="/">DE GUNTIBUS</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <% navItems.forEach(item => { %>
+                    <li><a href="<%= item.url %>"><%= item.name %></a></li>
+                <% }); %>
+            </ul>
+        </nav>
+    </div>
+</header>
