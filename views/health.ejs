@@ -2,53 +2,25 @@
 <%- include('includes/navigation') %>
 
 <div class="featured">
-<h1>HEALTH</h1>
-<div class="section_sports">
+    <h1><%= sectionTitle %></h1> <!-- Dynamic section title -->
+    <div class="section_sports">
       <div class="section">
-        <!-- <h1>SPORTS</h1> -->
+        <% articles.forEach(article => { %> <!-- Loop through articles -->
           <article class="post">
-            <img src="img/water.jpg" alt="Surfer on wave">
-            <h2>Train Like a Pro Athlete</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+            <a href="/details">
+            <img src="<%= article.image %>" alt="<%= article.alt %>"></a> <!-- Dynamic image -->
+            <h2><%= article.title %></h2> <!-- Dynamic title -->
+            <p><%= article.description %></p> <!-- Dynamic description -->
             <div class="meta">
-              <span>9/3/2022</span>
-              <span class="tag">SPORTS</span>
+              <span><%= article.date %></span> <!-- Dynamic date -->
+              <span class="tag"><%= article.tag %></span> <!-- Dynamic tag -->
             </div>
           </article>
-    
-          <article class="post">
-            <img src="img/basket.jpg" alt="Modern gym">
-            <h2>The Evolution of Sports</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-            <div class="meta">
-              <span>5/31/2022</span>
-              <span class="tag">SPORTS</span>
-            </div>
-          </article>
-    
-          <article class="post">
-            <img src="img/ball.jpg" alt="Tennis racket">
-            <h2>Latest Sports News</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-            <div class="meta">
-              <span>12/15/2022</span>
-              <span class="tag">SPORTS</span>
-            </div>
-          </article>
-    
-          <article class="post">
-            <img src="img/gym.jpg" alt="Tennis racket">
-            <h2>Latest Sports News</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-            <div class="meta">
-              <span>12/15/2022</span>
-              <span class="tag">SPORTS</span>
-            </div>
-          </article>
-        <!-- </div> -->
+        <% }) %>
       </div>
     </div>
-</div>
+  </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
       const dropdownButtons = document.querySelectorAll('.dropbtn');
@@ -79,5 +51,6 @@
       });
     });
   </script>
+  
     <%- include('includes/end') %>
 

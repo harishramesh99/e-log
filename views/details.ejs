@@ -1,0 +1,91 @@
+<%- include('includes/head',{ pageTitle: 'Pulse | Blogs', pageStyle: 'details.css' }) %>
+<%- include('includes/navigation') %>
+<main class="content">
+<section class="hero-section">
+    <h1>THE BEAUTY OF DESIGN</h1>
+    <% articles.forEach(article => { %>
+    <img src="<%= article.image %>" alt="">
+    <% }) %>
+    <div class="writing"><p>Nobis consequatur dolor voluptas modi illum.
+        Voluptatem laboriosam repellendus. Eaque exercitationem et sed quis at corporis eaque commodi asperiores. Aliquam autem suscipit occaecati magni ut veniam eos. Corrupti omnis ea. Rerum numquam perferendis. Laudantium neque odio reiciendis sed itaque quod enim autem cumque. Nobis consequatur dolor voluptas modi illum. Voluptatem laboriosam repellendus. Eaque exercitationem et sed quis at corporis eaque commodi asperiores. Aliquam autem suscipit occaecati magni ut veniam eos. Corrupti omnis ea. Rerum numquam perferendis. Laudantium neque odio reiciendis sed itaque quod enim autem cumque.
+        
+        ‍
+        
+        Culpa voluptatem similique odio fuga eum magnam blanditiis ab. Qui at consequatur dolorem qui. Ipsa deserunt ad quis voluptatem corrupti libero at fugit repudiandae. Saepe dignissimos quibusdam quis enim.
+        ‍
+        
+        Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim. Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim.Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim.
+        
+        ‍
+        
+        Nobis consequatur dolor voluptas modi illum.
+        Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim. Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim.Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim.
+        
+        ‍
+        
+        Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui.
+        Nulla quos possimus inventore laudantium molestias quidem
+        Qui animi voluptas eum libero nam sunt corrupti.
+        Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae.
+        ‍
+        
+        Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim. Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim.Magnam delectus facere dolorem quia alias iure. Nihil minima ipsa qui. Nulla quos possimus inventore laudantium molestias quidem. Qui animi voluptas eum libero nam sunt corrupti. Architecto quis nostrum cum quia provident esse reprehenderit. Velit cumque et aliquam veritatis nulla minus quae. Officiis quia quo mollitia iusto quas enim.</p></div>
+  </section>
+
+  <aside class="right-sidebar">
+    <div class="latest">
+      <h2>LATEST</h2>
+      TECHNOLOGY <br>
+        <p><strong>Transform Our Connected World</strong></p>
+      SPORTS</strong> <br> <br>
+        <strong>Train Like a Pro Athlete</strong></p>
+    </div>
+    <div class="featured">
+      <h2>FEATURED</h2>
+      <img src="img/face.jpg" alt="Featured Article">
+      <h3>The Future of Technology</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+    <br>
+    <div class="featured">
+      <h2>FEATURED</h2>
+      <img src="img/face2.jpg" alt="Featured Article">
+      <h3>The Future of Technology</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+  </aside>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dropdownButtons = document.querySelectorAll('.dropbtn');
+  
+      dropdownButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          const dropdown = event.currentTarget.nextElementSibling;
+  
+          // Toggle visibility of the current dropdown
+          dropdown.classList.toggle('visible');
+  
+          // Close other dropdowns
+          document.querySelectorAll('.dropdown-content').forEach((content) => {
+            if (content !== dropdown) {
+              content.classList.remove('visible');
+            }
+          });
+  
+          event.stopPropagation();
+        });
+      });
+  
+      // Close dropdown if clicking outside
+      document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach((content) => {
+          content.classList.remove('visible');
+        });
+      });
+    });
+  </script>
+
+</main>
+
+<%- include('includes/end') %>
