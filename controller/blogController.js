@@ -43,19 +43,24 @@ exports.getCategories = () => {
     }
   };
 
-exports.getArticleDetails = async (req, res) => {
-  try {
-    const article = await Blog.findById(req.params.id);
-    const relatedArticles = await Blog.find({
-      category: article.category,
-      _id: { $ne: article._id }
-    }).limit(3);
-
-    res.render('details', { article, relatedArticles });
-  } catch (error) {
-    res.status(500).render('error', { error });
-  }
-};
+  exports.getArticleDetails = async (req, res) => {
+    try {
+      const article = await Blog.findById(req.params.id);
+      if (!article) {
+        return res.status(404).render('error', { error: 'Article not found.' });
+      }
+  
+      const relatedArticles = await Blog.find({
+        category: article.category,
+        _id: { $ne: article._id }
+      }).limit(3);
+  
+      res.render('details', { article, relatedArticles });
+    } catch (error) {
+      res.status(500).render('error', { error: error.message });
+    }
+  };
+  
 
 // API endpoints
 exports.createBlog = async (req, res) => {
