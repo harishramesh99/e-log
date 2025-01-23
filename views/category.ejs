@@ -1,0 +1,22 @@
+// views/category.ejs
+<%- include('includes/head',{ pageTitle: `${sectionTitle} | Blogs`, pageStyle: 'health.css' }) %>
+<%- include('includes/navigation') %>
+
+<div class="featured">
+  <h1><%= sectionTitle.toUpperCase() %></h1>
+  <div class="section">
+    <% articles.forEach(article => { %>
+      <article class="post">
+        <a href="/details/<%= article._id %>">
+          <img src="<%= article.image %>" alt="<%= article.title %>">
+        </a>
+        <h2><%= article.title %></h2>
+        <p><%= article.description %></p>
+        <div class="meta">
+          <span><%= article.createdAt.toLocaleDateString() %></span>
+          <span class="tag"><%= article.category %></span>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+</div>

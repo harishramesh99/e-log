@@ -1,27 +1,23 @@
-
+// views/home.ejs
 <%- include('includes/head',{ pageTitle: 'Pulse | Blogs', pageStyle: 'style.css' }) %>
+
 <%- include('includes/navigation') %>
 
- <main class="content">
+
+
+
+<main class="content">
   <aside class="left-sidebar">
     <h2>MOST POPULAR</h2>
-    <div class="popular-article">
-      <img src="img/np1.jpg" alt="Popular Article">
-      <p>BUSINESS</p>
-      <h3>Innovative Strategies for Growth</h3>
-      <p>9/3/2022</p>
-    </div>
-    <br>
-    <h2>MOST POPULAR</h2>
-    <div class="popular-article">
-      <img src="img/build1.jpg" alt="Popular Article">
-      <p>BUSINESS</p>
-      <h3>Innovative Strategies for Growth</h3>
-      <p>9/3/2022</p>
-    </div>
+    <% featured.slice(0, 2).forEach(article => { %>
+      <div class="popular-article">
+        <img src="<%= article.image %>" alt="<%= article.title %>">
+        <p><%= article.category %></p>
+        <h3><%= article.title %></h3>
+        <p><%= article.createdAt.toLocaleDateString() %></p>
+      </div>
+    <% }) %>
   </aside>
-
-  
 
   <section class="hero-section">
     <h1>THE BEAUTY OF DESIGN</h1>
@@ -31,140 +27,46 @@
   <aside class="right-sidebar">
     <div class="latest">
       <h2>LATEST</h2>
-      TECHNOLOGY <br>
-        <p><strong>Transform Our Connected World</strong></p>
-      SPORTS</strong> <br> <br>
-        <strong>Train Like a Pro Athlete</strong></p>
-    </div>
-    <div class="featured">
-      <h2>FEATURED</h2>
-      <img src="img/face.jpg" alt="Featured Article">
-      <h3>The Future of Technology</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    </div>
-    <br>
-    <div class="featured">
-      <h2>FEATURED</h2>
-      <img src="img/face2.jpg" alt="Featured Article">
-      <h3>The Future of Technology</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <% featured.forEach(article => { %>
+        <p><strong><%= article.title %></strong></p>
+      <% }) %>
     </div>
   </aside>
 </main>
 
 <div class="health-section">
-<h1>HEALTH</h1>
+  <h1>HEALTH</h1>
   <div class="health">
+    <% healthArticles.forEach(article => { %>
       <article class="post">
-        <img src="img/fruit.jpg" alt="Tropical fruits">
-        <h2>Understanding Nutrition Labels</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+        <img src="<%= article.image %>" alt="<%= article.title %>">
+        <h2><%= article.title %></h2>
+        <p><%= article.description %></p>
         <div class="meta">
-          <span>7/20/2023</span>
-          <span class="tag">HEALTH</span>
+          <span><%= new Date(article.date).toLocaleDateString() %></span>
+          <span class="tag"><%= article.category %></span>
         </div>
       </article>
-
-      <article class="post">
-        <img src="img/health1.jpg" alt="Tropical fruits">
-        <h2>Understanding Nutrition Labels</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-        <div class="meta">
-          <span>7/20/2023</span>
-          <span class="tag">HEALTH</span>
-        </div>
-      </article>
-
-      <article class="post">
-        <img src="img/health2.jpg" alt="Tropical fruits">
-        <h2>Understanding Nutrition Labels</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-        <div class="meta">
-          <span>7/20/2023</span>
-          <span class="tag">HEALTH</span>
-        </div>
-      </article>
-  </div> 
-
-</div>
-  
-<div class="section_sports">
-<h1>SPORTS</h1>
-  <div class="section">
-    <!-- <div class= "sports-grid"> -->
-      <article class="post">
-        <img src="img/water.jpg" alt="Surfer on wave">
-        <h2>Train Like a Pro Athlete</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-        <div class="meta">
-          <span>9/3/2022</span>
-          <span class="tag">SPORTS</span>
-        </div>
-      </article>
-
-      <article class="post">
-        <img src="img/basket.jpg" alt="Modern gym">
-        <h2>The Evolution of Sports</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-        <div class="meta">
-          <span>5/31/2022</span>
-          <span class="tag">SPORTS</span>
-        </div>
-      </article>
-
-      <article class="post">
-        <img src="img/ball.jpg" alt="Tennis racket">
-        <h2>Latest Sports News</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-        <div class="meta">
-          <span>12/15/2022</span>
-          <span class="tag">SPORTS</span>
-        </div>
-      </article>
-
-      <article class="post">
-        <img src="img/gym.jpg" alt="Tennis racket">
-        <h2>Latest Sports News</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-        <div class="meta">
-          <span>12/15/2022</span>
-          <span class="tag">SPORTS</span>
-        </div>
-      </article>
-    <!-- </div> -->
+    <% }) %>
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const dropdownButtons = document.querySelectorAll('.dropbtn');
-
-    dropdownButtons.forEach((button) => {
-      button.addEventListener('click', (event) => {
-        const dropdown = event.currentTarget.nextElementSibling;
-
-        // Toggle visibility of the current dropdown
-        dropdown.classList.toggle('visible');
-
-        // Close other dropdowns
-        document.querySelectorAll('.dropdown-content').forEach((content) => {
-          if (content !== dropdown) {
-            content.classList.remove('visible');
-          }
-        });
-
-        event.stopPropagation();
-      });
-    });
-
-    // Close dropdown if clicking outside
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.dropdown-content').forEach((content) => {
-        content.classList.remove('visible');
-      });
-    });
-  });
-</script>
+<!-- Add sports section -->
+<div class="section_sports">
+  <h1>SPORTS</h1>
+  <div class="section">
+    <% sportsArticles.forEach(article => { %>
+      <article class="post">
+        <img src="<%= article.image %>" alt="<%= article.title %>">
+        <h2><%= article.title %></h2>
+        <p><%= article.description %></p>
+        <div class="meta">
+          <span><%= new Date(article.date).toLocaleDateString() %></span>
+          <span class="tag"><%= article.category %></span>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+</div>
 
 <%- include('includes/end') %>
-

@@ -1,24 +1,23 @@
 <header>
-    <div class="top_nav">
+  <div class="top_nav">
       <div class="logo">
-        <a href="/">pulse</a></div>
+          <a href="/">pulse</a>
+      </div>
 
-        <div class="dropdown">
-          <button class="dropbtn" onclick="toggleDropdown(event)">Blogs</button>
-          <div class="dropdown-content">
-              <a href="/">All</a>
-              <a href="/health">Health</a>
-              <a href="/design">Design</a>
-              <a href="/tech">Technology</a>
-              <a href="/climate">Climate</a>
-              <a href="/sports">Sports</a>
-          </div>
-        
+      <div class="dropdown">
+        <button class="dropbtn">Blogs</button>
+        <div class="dropdown-content">
+            <% categories.forEach(category => { %>
+                <a href="/<%= category.toLowerCase() %>"><%= category %></a>
+            <% }); %>
+        </div>
+    </div>
 
       <div class="middle">
-        <input type="text" placeholder="Search..." class="searchbar">
-      </div></div>
-      <div class="end"><a href="/signin">Sign in/sign up</a></div>
-    </div>
-      </header>
-      
+          <input type="text" placeholder="Search..." class="searchbar">
+      </div>
+      <div class="end">
+          <a href="/signin">Sign in/sign up</a>
+      </div>
+  </div>
+</header>
