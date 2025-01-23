@@ -16,6 +16,14 @@
         "dest": "/public/$1"
       },
       {
+        "src": "/routes/(.*)",
+        "dest": "/routes/$1"
+      },
+      {
+        "src": "/views/(.*)",
+        "dest": "/views/$1"
+      },
+      {
         "src": "/(.*)",
         "dest": "/app.js"
       }
