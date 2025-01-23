@@ -3,12 +3,14 @@ require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
 const blogRoute = require('./routes/blogRoutes');
+const path = require('path');
 
 const app = express();
 
 // View engine setup
 app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set('views', path.join(__dirname, 'views'));
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
