@@ -46,22 +46,27 @@ exports.getCategories = () => {
   exports.getArticleDetails = async (req, res) => {
     try {
       const article = await Blog.findById(req.params.id);
-      if (!article) {
-        return res.status(404).render('error', { error: 'Article not found.' });
-      }
-  
+      const categories = Blog.schema.path('category').enumValues;
       const relatedArticles = await Blog.find({
         category: article.category,
         _id: { $ne: article._id }
       }).limit(3);
   
-      res.render('details', { article, relatedArticles });
+      res.render('details', { 
+        article, 
+        relatedArticles,
+        categories
+      });
     } catch (error) {
-      res.status(500).render('error', { error: error.message });
+      console.error('Error:', error);
+      res.status(500).render('error', { 
+        error: error.message,
+        categories: Blog.schema.path('category').enumValues
+      });
     }
   };
-  
 
+  
 // API endpoints
 exports.createBlog = async (req, res) => {
   try {

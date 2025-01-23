@@ -6,8 +6,6 @@
     <h1><%= article.title %></h1>
     <% if (article.image) { %>
       <img src="<%= article.image %>" alt="<%= article.title %>" class="article-image">
-    <% } else { %>
-      <p>No image available for this article.</p>
     <% } %>
     <div class="writing">
       <p><%= article.content %></p>
@@ -23,8 +21,6 @@
             <p><strong><%= related.title %></strong></p>
           </a>
         <% }) %>
-      <% } else { %>
-        <p>No related articles found.</p>
       <% } %>
     </div>
   </aside>
