@@ -249,6 +249,14 @@ app.get('/health', (req, res) => {
     });
   });
 
+app.get('/signin', (req, res) => {
+    res.render('signin'); // Renders the Sign In page
+  });
+  
+app.get('/signup', (req, res) => {
+    res.render('signup'); // Renders the Sign Up page
+  });
+  
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
