@@ -1,6 +1,6 @@
 // views/category.ejs
 <%- include('includes/head',{ pageTitle: `${sectionTitle} | Blogs`, pageStyle: 'health.css' }) %>
-<%- include('includes/navigation') %>
+<%- include('includes/navigation', { currentPage: 'category' }) %>
 
 <div class="featured">
   <h1><%= sectionTitle.toUpperCase() %></h1>

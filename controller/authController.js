@@ -6,12 +6,17 @@ const defaultCategories = ['HEALTH', 'SPORTS', 'TECH', 'DESIGN', 'CLIMATE'];
 
 exports.getSignIn = (req, res) => {
     console.log('CSRF Token in getSignIn:', req.csrfToken());
-    res.render('signin', { csrfToken: req.csrfToken() });
+    res.render('signin', { 
+      csrfToken: req.csrfToken(),
+      currentPage: 'signin'
+    });
   };
   
-  
   exports.getSignUp = (req, res) => {
-    res.render('signup', { categories: res.locals.categories || [] });
+    res.render('signup', { 
+      categories: res.locals.categories || [],
+      currentPage: 'signup'
+    });
   };
 
 exports.postSignIn = async (req, res) => {

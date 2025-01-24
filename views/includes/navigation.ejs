@@ -3,35 +3,42 @@
     <div class="logo">
       <a href="/">pulse</a>
     </div>
- 
-    <div class="dropdown">
-      <button class="dropbtn">Blogs</button>
-      <div class="dropdown-content">
-        <% if (categories && categories.length) { %>
-          <% categories.forEach(category => { %>
-            <a href="/<%= category.toLowerCase() %>"><%= category %></a>
-          <% }); %>
-        <% } else { %>
-          <p>No categories available</p>
-        <% } %>
+
+    <% if (!currentPage || (currentPage !== 'signin' && currentPage !== 'signup')) { %>
+      <div class="dropdown">
+        <button class="dropbtn">Blogs</button>
+        <div class="dropdown-content">
+          <% if (categories && categories.length) { %>
+            <% categories.forEach(category => { %>
+              <a href="/<%= category.toLowerCase() %>"><%= category %></a>
+            <% }); %>
+          <% } else { %>
+            <p>No categories available</p>
+          <% } %>
+        </div>
       </div>
-    </div>
- 
-    <div class="middle">
-      <input type="text" placeholder="Search..." class="searchbar">
-    </div>
- 
-    <div class="end">
+
+      <div class="middle">
+        <input type="text" placeholder="Search..." class="searchbar">
+      </div>
+    <% } %>
+
+    
+    
+
+        <div class="middle">
       <% if (isAuthenticated) { %>
         <span>Welcome, <%= user.username %></span>
         <a href="/write" class="write-btn">Write Blog</a>
+        </div>
         <form action="/signout" method="POST" style="display: inline;">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <div class="end"></div>
           <button type="submit">Sign Out</button>
-         </form>
+        </form>
       <% } else { %>
         <a href="/signin">Sign in/sign up</a>
       <% } %>
     </div>
   </div>
- </header>
+</header>

@@ -1,21 +1,22 @@
-<%- include('includes/head', { pageTitle: 'Sign In | Pulse Blogs', pageStyle: 'style.css' }) %>
-<%- include('includes/navigation') %>
+<%- include('includes/head.ejs', { pageTitle: 'Sign In | Pulse Blogs', pageStyle: 'style.css' }) %>
+<%- include('includes/navigation', { currentPage: 'Sign In' }) %>
 
 <main class="signin-container">
-  <h1>Sign In / Sign Up</h1>
+  <h1 class="text-center">Sign In / Sign Up</h1>
   <div class="signin-form">
-    <form action="/signin" method="POST">
-      <input type="hidden" name="_csrf" value="<%= csrfToken %>"> <!-- CSRF token -->
+    <form action="/signin" method="POST" class="form-center">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
-    
+      
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
-    
+      
       <button type="submit">Sign In</button>
     </form>
     <p>Don't have an account? <a href="/signup">Sign Up</a></p>
   </div>
 </main>
 
-<%- include('includes/end') %>
+<%- include('includes/end.ejs') %>
