@@ -1,23 +1,33 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const blogController = require('../controller/blogController');
 
+const { isAuth } = require('../middleware/auth');
 
+// Static routes first
+router.get('/write', isAuth, blogController.getWritePage);
+router.post('/write', isAuth, blogController.createBlog);
+// API routes
+router.get('/api/blogs', blogController.getAllBlogs);
+router.post('/api/blogs', blogController.createBlog);
+router.delete('/api/blogs/:id', isAuth, blogController.deleteBlog);
 
-router.delete('/api/blogs/:id', blogController.deleteBlog);
 // Home page
 router.get('/', blogController.getHomePage);
 
-// Article details (specific route before category route)
-router.get('/details/:id', blogController.getArticleDetails);
+// Details page with ID validation
+router.get('/details/:id', (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(404).render('error', { 
+      error: 'Invalid blog ID',
+      categories: []
+    });
+  }
+  next();
+}, blogController.getArticleDetails);
 
-// Category page
+// Category page last
 router.get('/:category', blogController.getCategoryPage);
-
-// API routes
-router.post('/api/blogs', blogController.createBlog);
-router.get('/api/blogs', blogController.getAllBlogs);
-// Delete a blog by ID
-
 
 module.exports = router;

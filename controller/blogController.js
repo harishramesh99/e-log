@@ -66,17 +66,26 @@ exports.getCategories = () => {
     }
   };
 
-  
-// API endpoints
-exports.createBlog = async (req, res) => {
-  try {
-    const blog = await Blog.create(req.body);
-    res.status(201).json(blog);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
 
+// API endpoints
+// blogController.js
+// blogController.js
+exports.createBlog = async (req, res) => {
+    try {
+      const blogData = {
+        ...req.body,
+        author: req.session.user._id, // Add author ID
+        image: `/img/${req.body.image}${!req.body.image.endsWith('.jpg') ? '.jpg' : ''}`
+      };
+      const blog = await Blog.create(blogData);
+      res.redirect('/details/' + blog._id);
+    } catch (error) {
+      res.render('write', { 
+        categories: Blog.schema.path('category').enumValues,
+        error: error.message 
+      });
+    }
+  };
 exports.getAllBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find().sort('-date');
@@ -101,4 +110,8 @@ exports.deleteBlog = async (req, res) => {
     }
   };
   
-  
+// blogController.js
+exports.getWritePage = async (req, res) => {
+    const categories = ['HEALTH', 'SPORTS', 'TECH', 'DESIGN', 'CLIMATE'];
+    res.render('write', { categories });
+   };

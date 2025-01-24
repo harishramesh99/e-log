@@ -1,24 +1,33 @@
 <header>
   <div class="top_nav">
-      <div class="logo">
-          <a href="/">pulse</a>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">Blogs</button>
-        <div class="dropdown-content">
-            <% categories.forEach(category => { %>
-                <a href="/<%= category.toLowerCase() %>"><%= category %></a>
-            <% }); %>
-            
-        </div>
+    <div class="logo">
+      <a href="/">pulse</a>
     </div>
-
-      <div class="middle">
-          <input type="text" placeholder="Search..." class="searchbar">
+ 
+    <div class="dropdown">
+      <button class="dropbtn">Blogs</button>
+      <div class="dropdown-content">
+        <% categories.forEach(category => { %>
+          <a href="/<%= category.toLowerCase() %>"><%= category %></a>
+        <% }); %>
       </div>
-      <div class="end">
-          <a href="/signin">Sign in/sign up</a>
-      </div>
+    </div>
+ 
+    <div class="middle">
+      <input type="text" placeholder="Search..." class="searchbar">
+    </div>
+ 
+    <div class="end">
+      <% if (isAuthenticated) { %>
+        <span>Welcome, <%= user.username %></span>
+        <a href="/write" class="write-btn">Write Blog</a>
+        <form action="/signout" method="POST" style="display: inline;">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit">Sign Out</button>
+         </form>
+      <% } else { %>
+        <a href="/signin">Sign in/sign up</a>
+      <% } %>
+    </div>
   </div>
-</header>
+ </header>
