@@ -7,6 +7,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
+const productRoutes = require('./routes/adminRoutes'); // Add this
 const connectDB = require('./config/db');
 const Blog = require('./models/blogs');
 
@@ -21,10 +22,11 @@ const store = new MongoDBStore({
   collection: 'sessions',
 });
 
+// Categories middleware
 app.use(async (req, res, next) => {
   try {
     const categories = Blog.schema.path('category').enumValues || [];
-    res.locals.categories = categories; // This makes `categories` available in all views
+    res.locals.categories = categories;
   } catch (error) {
     console.error('Error fetching categories:', error);
     res.locals.categories = [];
@@ -59,7 +61,7 @@ app.use(csrf());
 // Global middleware for CSRF token and user session
 app.use((req, res, next) => {
   try {
-    res.locals.csrfToken = req.csrfToken(); // CSRF token available in views
+    res.locals.csrfToken = req.csrfToken();
     res.locals.isAuthenticated = req.session.isAuthenticated || false;
     res.locals.user = req.session.user || null;
     next();
@@ -72,11 +74,25 @@ app.use((req, res, next) => {
 // Routes
 app.use(authRoutes);
 app.use(blogRoutes);
+app.use('/admin', productRoutes); // Add product routes with /admin prefix
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).render('404', {
+    pageTitle: 'Page Not Found',
+    currentPage: null
+  });
+});
 
 // Error handler
 app.use((error, req, res, next) => {
+  console.error(error);
   res.status(500).render('error', {
+    pageTitle: 'Error',
+    currentPage: null,
     error: error.message || 'Something went wrong!',
+    isAuthenticated: req.session.isAuthenticated,
+    user: req.session.user
   });
 });
 

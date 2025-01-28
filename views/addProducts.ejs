@@ -1,0 +1,70 @@
+<%- include('includes/head.ejs', { pageTitle: editing ? 'Edit Product' : 'Add Product', pageStyle: 'style.css' }) %>
+<%- include('includes/navigation', { currentPage: editing ? 'Edit Product' : 'Add Product' }) %>
+
+<main class="write-container">
+    <h1 class="text-center"><%= editing ? 'Edit Product' : 'Add Product' %></h1>
+    <div class="write-form">
+        <form action="/admin/<%= editing ? 'edit-product' : 'add-product' %>" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            
+            <% if(editing) { %>
+                <input type="hidden" name="productId" value="<%= product.id %>" readonly>
+            <% } %>
+            
+            <div class="form-group">
+                <label for="title">Product Name</label>
+                <input 
+                    type="text" 
+                    id="title" 
+                    name="title" 
+                    value="<%= editing ? product.title : '' %>"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select 
+                    id="category" 
+                    name="category" 
+                    required
+                >
+                    <option value="">Select a category</option>
+                    <option value="HEALTH" <%= editing && product.category === 'HEALTH' ? 'selected' : '' %>>Health</option>
+                    <option value="SPORTS" <%= editing && product.category === 'SPORTS' ? 'selected' : '' %>>Sports</option>
+                    <option value="TECH" <%= editing && product.category === 'TECH' ? 'selected' : '' %>>Tech</option>
+                    <option value="DESIGN" <%= editing && product.category === 'DESIGN' ? 'selected' : '' %>>Design</option>
+                    <option value="CLIMATE" <%= editing && product.category === 'CLIMATE' ? 'selected' : '' %>>Climate</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input 
+                    type="number" 
+                    id="price" 
+                    name="price" 
+                    step="0.01" 
+                    value="<%= editing ? product.price : '' %>"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea 
+                    id="description" 
+                    name="description" 
+                    rows="5"
+                    required
+                ><%= editing ? product.description : '' %></textarea>
+            </div>
+            
+            <button type="submit">
+                <%= editing ? 'Update Product' : 'Add Product' %>
+            </button>
+        </form>
+    </div>
+</main>
+
+<%- include('includes/end.ejs') %>

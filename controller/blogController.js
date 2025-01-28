@@ -1,6 +1,6 @@
 // controllers/blogController.js
 const Blog = require('../models/blogs');
-
+const Product = require('../models/product');
 
 exports.getCategories = () => {
     return Blog.schema.path('category').enumValues; // Retrieves enum values for the `category` field
@@ -43,28 +43,47 @@ exports.getCategories = () => {
     }
   };
 
-  exports.getArticleDetails = async (req, res) => {
-    try {
+  // blogController.js
+exports.getArticleDetails = async (req, res) => {
+  try {
       const article = await Blog.findById(req.params.id);
+      if (!article) {
+          return res.status(404).render('404', {
+              pageTitle: 'Article Not Found',
+              path: '/404'
+          });
+      }
+
+      // Get categories for navigation
       const categories = Blog.schema.path('category').enumValues;
+      
+      // Get related articles in the same category
       const relatedArticles = await Blog.find({
-        category: article.category,
-        _id: { $ne: article._id }
+          category: article.category,
+          _id: { $ne: article._id }
       }).limit(3);
-  
+
+      // Get suggested products based on article category
+      const suggestedProducts = await Product.find({
+          category: article.category // Assuming product categories match blog categories
+      }).limit(4);
+
       res.render('details', { 
-        article, 
-        relatedArticles,
-        categories
+          article,
+          relatedArticles,
+          suggestedProducts, // Add suggested products to the view
+          categories,
+          pageTitle: article.title,
+          currentPage: 'blog'
       });
-    } catch (error) {
+  } catch (error) {
       console.error('Error:', error);
       res.status(500).render('error', { 
-        error: error.message,
-        categories: Blog.schema.path('category').enumValues
+          error: error.message,
+          categories: Blog.schema.path('category').enumValues
       });
-    }
-  };
+  }
+};
 
 
 // API endpoints

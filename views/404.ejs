@@ -1,0 +1,14 @@
+// Create a new file: views/404.ejs
+
+<%- include('includes/head.ejs', { pageTitle: 'Page Not Found', pageStyle: 'style.css' }) %>
+<%- include('includes/navigation.ejs', { currentPage: null }) %>
+
+<main class="content">
+    <div class="write-container">
+        <h1>404 - Page Not Found</h1>
+        <p>The page you're looking for might have been removed or is temporarily unavailable.</p>
+        <a href="/" class="btn">Back to Homepage</a>
+    </div>
+</main>
+
+<%- include('includes/end.ejs') %>

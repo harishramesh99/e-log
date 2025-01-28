@@ -18,15 +18,26 @@
         </div>
       </div>
 
+      <!-- New Products Dropdown - Only shows for authenticated users -->
+      <% if (isAuthenticated) { %>
+        <div class="dropdown">
+          <button class="dropbtn">Products</button>
+          <div class="dropdown-content">
+            <a href="/products">View All Products</a>
+            <% if (user) { %>
+              <a href="/admin/add-product">Add Product</a>
+              <a href="/admin/manage-products">Manage Products</a>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+
       <div class="middle">
         <input type="text" placeholder="Search..." class="searchbar">
       </div>
     <% } %>
 
-    
-    
-
-        <div class="middle">
+    <div class="middle">
       <% if (isAuthenticated) { %>
         <span>Welcome, <%= user.username %></span>
         <a href="/write" class="write-btn">Write Blog</a>
